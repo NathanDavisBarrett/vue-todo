@@ -27,7 +27,7 @@
     </div>
 
     <ul>
-      <li v-for="item in filteredTodos">
+      <li v-for="item in filteredTodos" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
         <input type="checkbox" v-model="item.completed"/>
         <label v-bind:class="{ completed: item.completed }">{{ item.text }}</label>
         <button v-on:click="deleteItem(item)" class="delete">X</button>
