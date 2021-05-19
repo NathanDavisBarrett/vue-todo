@@ -24,5 +24,12 @@ var app = new Vue({
         this.todos.splice(index,1);
       }
     },
+  },
+  computed: {
+    activeTodos() {
+      return this.todos.filter(item => {
+        return !item.completed;
+      });
+    }
   }
 });

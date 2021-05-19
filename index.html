@@ -12,6 +12,8 @@
   <div id="app">
     <h1>A List of Things To Do</h1>
 
+    <p v-show="activeTodos.length === 0">Congrats! You're all done!</p>
+
     <form v-on:submit.prevent="addItem">
       <input type="text" v-model="message">
       <button type="submit">Add</button>
