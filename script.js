@@ -11,5 +11,12 @@ var app = new Vue({
       text: "profit",
       completed: false,
     }],
+    message: '',
   },
+  methods: {
+    addItem() {
+      this.todos.push({text: this.message, completed: false});
+      this.message = '';
+    }
+  }
 });
