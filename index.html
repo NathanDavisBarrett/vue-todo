@@ -19,8 +19,15 @@
       <button type="submit">Add</button>
     </form>
 
+    <div class="controls">
+      <button v-on:click="showAll()">Show All</button>
+      <button v-on:click="showActive()">Show Active</button>
+      <button v-on:click="showCompleted()">Show Completed</button>
+      <button v-on:click="deleteCompleted()">Delte Completed</button>
+    </div>
+
     <ul>
-      <li v-for="item in todos">
+      <li v-for="item in filteredTodos">
         <input type="checkbox" v-model="item.completed"/>
         <label v-bind:class="{ completed: item.completed }">{{ item.text }}</label>
         <button v-on:click="deleteItem(item)" class="delete">X</button>

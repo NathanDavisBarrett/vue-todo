@@ -12,6 +12,7 @@ var app = new Vue({
       completed: false,
     }],
     message: '',
+    show: 'all',
   },
   methods: {
     addItem() {
@@ -24,12 +25,39 @@ var app = new Vue({
         this.todos.splice(index,1);
       }
     },
+    showAll() {
+      this.show = 'all';
+    },
+    showActive() {
+      this.show = 'active';
+    },
+    showCompleted() {
+      this.show = 'completed';
+    },
+    deleteCompleted() {
+      this.todos = this.todos.filter(item => {
+        return !item.completed;
+      });
+    },
   },
   computed: {
     activeTodos() {
       return this.todos.filter(item => {
         return !item.completed;
       });
-    }
+    },
+    filteredTodos() {
+      if (this.show === 'active') {
+        return this.todos.filter(item => {
+          return !item.completed;
+        });
+      }
+      if (this.show === 'completed') {
+        return this.todos.filter(item => {
+          return item.completed;
+        });
+      }
+      return this.todos;
+    },
   }
 });
